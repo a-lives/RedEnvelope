@@ -7,7 +7,7 @@ track = pygame.mixer.music.load('./1.mp3')
 
 app = Application(backend='uia').connect(path='D:\WeChat\WeChat.exe')
 
-win = app.window()
+win = app.window(title="微信")
 
 def click(ele_name,win=win,control_type=None):
     ele = win.window(best_match=ele_name,control_type=control_type)
