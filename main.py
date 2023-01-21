@@ -28,7 +28,8 @@ def find_text(totext):
             if text == totext:
                 c += 1
                 print("\rFound red envelope",end="          \n")
-                pygame.mixer.music.play()
+                if not pygame.mixer.music.get_busy():
+                    pygame.mixer.music.play()
                 chat.draw_outline(colour="red")
         if chat == chats[-1] and c==0:
             print("\rCan't find:%s"%datetime.datetime.now().strftime("%H:%M:%S"),end='      ')
