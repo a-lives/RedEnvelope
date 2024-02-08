@@ -5,7 +5,9 @@ import pygame
 pygame.mixer.init()
 track = pygame.mixer.music.load('./1.mp3')
 
-app = Application(backend='uia').connect(path='D:\WeChat\WeChat.exe')
+WECHAT_PATH = "D:/Tencent/WeChat/WeChat.exe"
+
+app = Application(backend='uia').connect(path=WECHAT_PATH)
 
 win = app.window(title="微信")
 
@@ -27,7 +29,7 @@ def find_text(totext):
             text = chat.window_text()
             if text == totext:
                 c += 1
-                print("\rFound red envelope",end="          \n")
+                print("\rFound red envelope - %s"%datetime.datetime.now().strftime("%H:%M:%S"),end="          \n")
                 if not pygame.mixer.music.get_busy():
                     pygame.mixer.music.play()
                 chat.draw_outline(colour="red")
