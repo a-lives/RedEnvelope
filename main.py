@@ -21,6 +21,7 @@ def click(ele_name,win=win,control_type=None):
     mouse.click(button='left',coords=pos)
 
 def find_text(totext):
+    global CHANGE
     chatbox = win.window(title='会话',control_type="List")
     chats = chatbox.wrapper_object().descendants(depth=4)
     # print(chats)
