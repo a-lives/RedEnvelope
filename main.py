@@ -34,7 +34,7 @@ def find_text(totext):
                 if CHANGE:
                     print("\n")
                     CHANGE = False
-                print("\nFound red envelope - %s"%datetime.datetime.now().strftime("%H:%M:%S"),end="          ")
+                print("\rFound red envelope - %s"%datetime.datetime.now().strftime("%H:%M:%S"),end="          ")
                 if not pygame.mixer.music.get_busy():
                     pygame.mixer.music.play()
                 chat.draw_outline(colour="red")
