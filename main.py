@@ -6,6 +6,7 @@ pygame.mixer.init()
 track = pygame.mixer.music.load('./1.mp3')
 
 WECHAT_PATH = "D:/Tencent/WeChat/WeChat.exe"
+CHANGE = True
 
 app = Application(backend='uia').connect(path=WECHAT_PATH)
 
@@ -29,11 +30,17 @@ def find_text(totext):
             text = chat.window_text()
             if text == totext:
                 c += 1
-                print("\rFound red envelope - %s"%datetime.datetime.now().strftime("%H:%M:%S"),end="          \n")
+                if CHANGE:
+                    print("\n")
+                    CHANGE = not CHANGE
+                print("\nFound red envelope - %s"%datetime.datetime.now().strftime("%H:%M:%S"),end="          ")
                 if not pygame.mixer.music.get_busy():
                     pygame.mixer.music.play()
                 chat.draw_outline(colour="red")
         if chat == chats[-1] and c==0:
+            if not CHANGE:
+                print("\n")
+                CHANGE = not CHANGE
             print("\rCan't find:%s"%datetime.datetime.now().strftime("%H:%M:%S"),end='      ')
                
 while 1:
